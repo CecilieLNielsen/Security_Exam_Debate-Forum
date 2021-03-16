@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="security-exam">
+    <output-path>$PROJECT_DIR$/out/artifacts/security_exam</output-path>
+    <root id="archive" name="security-exam.war" />
+  </artifact>
+</component>
