@@ -1,5 +1,7 @@
 package Models;
 
+import java.util.Objects;
+
 public class ThreadDTO {
 
     private int id;
@@ -22,16 +24,32 @@ public class ThreadDTO {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getCategory() {
         return category;
     }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public String getAuthor() {
         return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getDateOfCreation() {
@@ -40,5 +58,17 @@ public class ThreadDTO {
 
     public String getDateOfUpdate() {
         return dateOfUpdate;
+    }
+
+    public void setDateOfUpdate(String dateOfUpdate) {
+        this.dateOfUpdate = dateOfUpdate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ThreadDTO threadDTO = (ThreadDTO) o;
+        return id == threadDTO.id;
     }
 }
