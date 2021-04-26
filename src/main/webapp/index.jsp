@@ -62,7 +62,12 @@
                 <td>${thread.author}</td>
                 <td>${thread.dateOfCreation}</td>
                 <td>${thread.dateOfUpdate}</td>
-                <td>See thread</td>
+                <td>
+                    <form name="GetThreadById" action="<%= request.getContextPath() %>/GetThreadById" method="POST">
+                        <input type="hidden" name="id" value="${thread.id}">
+                        <input type="submit" value="See thread"/>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
 

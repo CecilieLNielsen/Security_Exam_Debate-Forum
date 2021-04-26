@@ -27,4 +27,14 @@
         <url-pattern>/GetAllThreads</url-pattern>
     </servlet-mapping>
     <!-- End of pair -->
+
+    <servlet>
+        <servlet-name>GetThreadByIdController</servlet-name>
+        <servlet-class>Controllers.GetThreadByIdController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetThreadByIdController</servlet-name>
+        <url-pattern>/GetThreadById</url-pattern>
+    </servlet-mapping>
 </web-app>
