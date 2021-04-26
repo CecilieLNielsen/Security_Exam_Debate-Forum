@@ -12,6 +12,7 @@ public class ThreadDaoImpl implements ThreadDao {
 
     public ThreadDaoImpl() {
         threads = new ArrayList<>();
+        threads.add(new ThreadDTO(1, "JSP help", "Code", "Clay Jensen", "24/04/2021", "24/04/2021"));
     }
 
     @Override

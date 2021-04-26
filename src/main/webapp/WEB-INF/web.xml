@@ -16,4 +16,15 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- Add a pair of following for each new controller -->
+    <servlet>
+        <servlet-name>GetAllThreadsController</servlet-name>
+        <servlet-class>Controllers.GetAllThreadsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetAllThreadsController</servlet-name>
+        <url-pattern>/GetAllThreads</url-pattern>
+    </servlet-mapping>
+    <!-- End of pair -->
 </web-app>
