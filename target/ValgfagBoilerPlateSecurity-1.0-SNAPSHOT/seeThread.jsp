@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cecilie
-  Date: 22/02/2021
-  Time: 12.54
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="Models.ThreadWithCommentsDTO" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,17 +9,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <% ThreadWithCommentsDTO threadWithComments = (ThreadWithCommentsDTO) request.getSession().getAttribute("threadWithComments"); %>
     <title>Thread</title>
-
-<h1>Title og thread</h1>
-    <div class="card">
-        <div class="card-body">
-            This is where you should see the thread, you have clicked on.
-        </div>
-    </div>
 </head>
 <body>
-
+<h1><%= threadWithComments.getThread().getTitle() %></h1>
+<div class="card">
+    <div class="card-body">
+        <p><%= threadWithComments.getThread().getDescription() %></p>
+    </div>
+</div>
 </body>
 </html>

@@ -12,7 +12,9 @@ public class ThreadDaoImpl implements ThreadDao {
 
     public ThreadDaoImpl() {
         threads = new ArrayList<>();
-        threads.add(new ThreadDTO(1, "JSP help", "Code", "Clay Jensen", "24/04/2021", "24/04/2021"));
+        threads.add(new ThreadDTO(1, "JSP help", "Code", "Clay Jensen", "How to make JSP? I have been struggling with creating simple pages", "24/04/2021", "24/04/2021"));
+        threads.add(new ThreadDTO(2, "Cake recipes", "Food", "Bertilda Monteson", "I need a good recipe for chocolate brownie cake", "25/04/2021", "25/04/2021"));
+        threads.add(new ThreadDTO(3, "Funny cats", "Animal", "James Ford", "My cat is doing this funny thing when I put a cucumber in front of it", "25/04/2021", "26/04/2021"));
     }
 
     @Override
@@ -50,6 +52,7 @@ public class ThreadDaoImpl implements ThreadDao {
                 existingThread.setAuthor(updatedThread.getAuthor());
                 existingThread.setTitle(updatedThread.getTitle());
                 existingThread.setCategory(updatedThread.getCategory());
+                existingThread.setDescription(updatedThread.getDescription());
                 existingThread.setDateOfUpdate(updatedThread.getDateOfUpdate());
                 return existingThread.getId();
             }

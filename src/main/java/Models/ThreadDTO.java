@@ -1,5 +1,6 @@
 package Models;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class ThreadDTO {
@@ -8,16 +9,43 @@ public class ThreadDTO {
     private String title;
     private String category;
     private String author;
+    private String description;
     private String dateOfCreation;
     private String dateOfUpdate;
 
-    public ThreadDTO(int id, String title, String category, String author, String dateOfCreation, String dateOfUpdate) {
+    public ThreadDTO(int id, String title, String category, String author, String description, String dateOfCreation, String dateOfUpdate) {
+        this.id = id;
+        this.title = title;
+        this.category = category;
+        this.description = description;
+        this.author = author;
+        this.dateOfCreation = dateOfCreation;
+        this.dateOfUpdate = dateOfUpdate;
+    }
+
+    /**
+     * Use for create new thread
+     */
+    public ThreadDTO(String title, String category, String author, String description) {
+        this.title = title;
+        this.category = category;
+        this.author = author;
+        this.description = description;
+        String currentDate = new Date().toString();
+        this.dateOfCreation = currentDate;
+        this.dateOfUpdate = currentDate;
+    }
+
+    /**
+     * Use for update thread
+     */
+    public ThreadDTO(int id, String title, String category, String author, String description) {
         this.id = id;
         this.title = title;
         this.category = category;
         this.author = author;
-        this.dateOfCreation = dateOfCreation;
-        this.dateOfUpdate = dateOfUpdate;
+        this.description = description;
+        this.dateOfUpdate = new Date().toString();
     }
 
     public int getId() {
@@ -50,6 +78,14 @@ public class ThreadDTO {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDateOfCreation() {

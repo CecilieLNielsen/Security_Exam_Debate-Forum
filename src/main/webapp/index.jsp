@@ -36,24 +36,6 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>How to bake a chocolate cake?</td>
-            <td>Baking</td>
-            <td>Lisa Millen</td>
-            <td>21/01/2021</td>
-            <td>13/02/2021</td>
-            <td>See thread</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>How to bake a carrot cake?</td>
-            <td>Baking</td>
-            <td>Lisa Millen</td>
-            <td>24/01/2021</td>
-            <td>16/02/2021</td>
-            <td>See thread</td>
-        </tr>
         <c:forEach var="thread" items="${allThreads}">
             <tr>
                 <th scope="row">${thread.id}</th>

@@ -37,4 +37,34 @@
         <servlet-name>GetThreadByIdController</servlet-name>
         <url-pattern>/GetThreadById</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteThreadController</servlet-name>
+        <servlet-class>Controllers.DeleteThreadController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteThreadController</servlet-name>
+        <url-pattern>/DeleteThread</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateThreadController</servlet-name>
+        <servlet-class>Controllers.CreateThreadController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreateThreadController</servlet-name>
+        <url-pattern>/CreateThread</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateThreadController</servlet-name>
+        <servlet-class>Controllers.UpdateThreadController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateThreadController</servlet-name>
+        <url-pattern>/UpdateThread</url-pattern>
+    </servlet-mapping>
 </web-app>
