@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cecilie
-  Date: 22/02/2021
-  Time: 12.55
-  To change this template use File | Settings | File Templates.
---%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,36 +9,41 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Create thread</title>
+    <title>Create post</title>
 </head>
 <body>
-<h1>Make a thread</h1>
+<h4>Please fill in the following to make a post</h4>
 
 <br>
 
 
 
-<select class="form-select" aria-label="Category">
-    <option selected>Choose category</option>
-    <option value="1">Baking</option>
-    <option value="2">Animals</option>
-    <option value="3">Beauty</option>
-</select>
+
 
 <br>
 <br>
 
-<div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Title</label>
-    <input type="title" class="form-control" id="exampleFormControlInput1">
-</div>
+<form name="CreateThread" action="<%= request.getContextPath() %>/CreateThread" method="POST">
 
-<br>
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title"/>
+    </div>
 
-<div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Write your post</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
-<button type="button" class="btn btn-primary">Create</button>
+    <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" id="category" name="category"/>
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Write your post</label>
+        <textarea type="text" class="form-control" id="description" name="description" rows="3"></textarea>
+    </div>
+    <input type="submit" value="Create"/>
+</form>
+
+<form name="Cancel" action="<%= request.getContextPath() %>/Cancel" method="POST">
+    <input type="submit" value="Cancel"/>
+</form>
 </body>
 </html>

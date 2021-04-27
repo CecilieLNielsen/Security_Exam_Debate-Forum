@@ -26,7 +26,7 @@ public class GetAllThreadsController extends HttpServlet {
         //}
 
         // Get all threads and redirect to all threads page
-        IThreadService threadService = new Service();
+        IThreadService threadService = Service.getInstance();
         List<ThreadDTO> allThreads = threadService.getAllThreads();
 
         HttpSession session = request.getSession();

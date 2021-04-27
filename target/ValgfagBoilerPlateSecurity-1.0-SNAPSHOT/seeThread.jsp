@@ -17,6 +17,11 @@
 <div class="card">
     <div class="card-body">
         <p><%= threadWithComments.getThread().getDescription() %></p>
+
+        <form name="DeleteThreadById" action="<%= request.getContextPath() %>/DeleteThread" method="POST">
+            <input type="hidden" name="id" value="<%= threadWithComments.getThread().getId() %>">
+            <input type="submit" value="Delete thread"/>
+        </form>
     </div>
 </div>
 </body>

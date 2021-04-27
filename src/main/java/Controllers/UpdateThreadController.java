@@ -29,7 +29,7 @@ public class UpdateThreadController extends HttpServlet {
         String description = request.getParameter("description");
         ThreadDTO thread = new ThreadDTO(id, title, category, author, description);
 
-        IThreadService threadService = new Service();
+        IThreadService threadService = Service.getInstance();
         int threadId = threadService.updateThread(thread);
 
         HttpSession session = request.getSession();

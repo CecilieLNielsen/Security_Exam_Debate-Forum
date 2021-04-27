@@ -67,4 +67,24 @@
         <servlet-name>UpdateThreadController</servlet-name>
         <url-pattern>/UpdateThread</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CancelController</servlet-name>
+        <servlet-class>Controllers.CancelController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CancelController</servlet-name>
+        <url-pattern>/Cancel</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GoToController</servlet-name>
+        <servlet-class>Controllers.GoToController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GoToController</servlet-name>
+        <url-pattern>/GoTo</url-pattern>
+    </servlet-mapping>
 </web-app>

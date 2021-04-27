@@ -2,19 +2,27 @@ package Persistence;
 
 import Models.ThreadDTO;
 import Persistence.DAO.ThreadDao;
+import Service.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ThreadDaoImpl implements ThreadDao {
 
+    private static  ThreadDaoImpl threadDaoImpl;
     private List<ThreadDTO> threads;
 
-    public ThreadDaoImpl() {
+    private ThreadDaoImpl() {
         threads = new ArrayList<>();
         threads.add(new ThreadDTO(1, "JSP help", "Code", "Clay Jensen", "How to make JSP? I have been struggling with creating simple pages", "24/04/2021", "24/04/2021"));
         threads.add(new ThreadDTO(2, "Cake recipes", "Food", "Bertilda Monteson", "I need a good recipe for chocolate brownie cake", "25/04/2021", "25/04/2021"));
         threads.add(new ThreadDTO(3, "Funny cats", "Animal", "James Ford", "My cat is doing this funny thing when I put a cucumber in front of it", "25/04/2021", "26/04/2021"));
+    }
+
+    public static ThreadDaoImpl getInstance() {
+        if (threadDaoImpl == null)
+            threadDaoImpl = new ThreadDaoImpl();
+        return threadDaoImpl;
     }
 
     @Override

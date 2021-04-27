@@ -7,7 +7,19 @@ import Persistence.DAO.CommentDao;
 import java.util.List;
 
 public class CommentDaoImpl implements CommentDao {
+
+    private static CommentDaoImpl commentDaoImpl;
     private List<CommentDTO> comments;
+
+    private CommentDaoImpl() {
+        // Private contructor for singleton pattern
+    }
+
+    public static CommentDaoImpl getInstance() {
+        if (commentDaoImpl == null)
+            commentDaoImpl = new CommentDaoImpl();
+        return commentDaoImpl;
+    }
 
     @Override
     public int createComment(CommentDTO comment) {

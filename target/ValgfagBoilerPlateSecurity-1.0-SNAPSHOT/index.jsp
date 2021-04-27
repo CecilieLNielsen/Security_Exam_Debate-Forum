@@ -11,27 +11,31 @@
     <title>Startpage</title>
 </head>
 <body>
-// Nav - My profile - login/logout
 
 <br/>
+<h1>Debate forum</h1>
 <br/>
-<h1>All threads</h1>
+<h3>All threads</h3>
 <br/>
 <form name="GetAllThreads" action="<%= request.getContextPath() %>/GetAllThreads" method="POST">
     <input type="submit" value="Get all threads"/>
 </form>
-<br/>
+
+<form name="GoTo" action="<%= request.getContextPath() %>/GoTo" method="POST">
+    <input type="hidden" name="page" value="createThread">
+    <input type="submit" value="Make new post"/>
+</form>
 
 <div>
     <table class="table">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Titel</th>
-            <th scope="col">Category?</th>
+            <th scope="col">Title</th>
+            <th scope="col">Category</th>
             <th scope="col">Created by</th>
-            <th scope="col">Date creation</th>
-            <th scope="col">Updated?</th>
+            <th scope="col">Date of creation</th>
+            <th scope="col">Last updated</th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -55,7 +59,6 @@
 
         </tbody>
     </table>
-    // Sorting and search?
 </div>
 </body>
 </html>

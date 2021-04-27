@@ -12,12 +12,19 @@ import java.util.List;
 
 public class Service implements IThreadService, ICommentService{
 
+    private static Service service;
     private ThreadDao threadDao;
     private CommentDao commentDao;
 
-    public Service() {
-        threadDao = new ThreadDaoImpl();
-        commentDao = new CommentDaoImpl();
+    private Service() {
+        threadDao = ThreadDaoImpl.getInstance();
+        commentDao = CommentDaoImpl.getInstance();
+    }
+
+    public static Service getInstance() {
+        if (service == null)
+            service = new Service();
+        return service;
     }
 
     @Override

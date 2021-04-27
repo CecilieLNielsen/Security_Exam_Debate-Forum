@@ -26,7 +26,7 @@ public class GetThreadByIdController extends HttpServlet {
 
         // Get all threads and redirect to all threads page
         int id = Integer.parseInt(request.getParameter("id"));
-        IThreadService threadService = new Service();
+        IThreadService threadService = Service.getInstance();
         ThreadWithCommentsDTO threadWithComments = threadService.getThreadWithCommentsById(id);
 
         HttpSession session = request.getSession();
