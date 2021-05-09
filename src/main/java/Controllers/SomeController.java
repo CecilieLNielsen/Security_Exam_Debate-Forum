@@ -24,15 +24,15 @@ public class SomeController extends HttpServlet {
         if (servletPath.equals("/login")) {
             ILoginService ls = new LoginService();
 
-            if(!ls.isLoggedin()) {
+            if (!ls.isLoggedin()) {
                 // user is logged in
             }
 
             String user = "john"; // request.getParameter("username");
             String pass = "doe"; // request.getParameter("password");
-            if(ls.verifyCredentials(user, pass)) {
+            if (ls.verifyCredentials(user, pass)) {
                 // user logged in
-            } else{
+            } else {
                 // user not logged in
             }
         }

@@ -1,6 +1,5 @@
 package Controllers;
 
-import Models.ThreadDTO;
 import Models.ThreadWithCommentsDTO;
 import Service.IThreadService;
 import Service.Service;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 
 @WebServlet(name = "GetThreadById")

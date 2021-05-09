@@ -1,5 +1,6 @@
 package Service;
 
+import Dependencies.MysqlConnection;
 import Models.CommentDTO;
 import Models.ThreadDTO;
 import Models.ThreadWithCommentsDTO;
@@ -8,17 +9,19 @@ import Persistence.DAO.CommentDao;
 import Persistence.DAO.ThreadDao;
 import Persistence.ThreadDaoImpl;
 
+import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
-public class Service implements IThreadService, ICommentService{
+public class Service implements IThreadService, ICommentService {
 
     private static Service service;
-    private ThreadDao threadDao;
-    private CommentDao commentDao;
+    private final ThreadDao THREAD_DAO;
+    private final CommentDao COMMENT_DAO;
 
     private Service() {
-        threadDao = ThreadDaoImpl.getInstance();
-        commentDao = CommentDaoImpl.getInstance();
+        EntityManagerFactory emf = new MysqlConnection().createEntityManagerFactory();
+        THREAD_DAO = ThreadDaoImpl.getInstance(emf);
+        COMMENT_DAO = CommentDaoImpl.getInstance(emf);
     }
 
     public static Service getInstance() {
@@ -29,43 +32,41 @@ public class Service implements IThreadService, ICommentService{
 
     @Override
     public int createThread(ThreadDTO thread) {
-        return threadDao.createThread(thread);
+        return THREAD_DAO.createThread(thread);
     }
 
     @Override
     public List<ThreadDTO> getAllThreads() {
-        return threadDao.getAllThreads();
+        return THREAD_DAO.getAllThreads();
     }
 
     @Override
     public ThreadWithCommentsDTO getThreadWithCommentsById(int id) {
-        ThreadDTO thread = threadDao.getThreadById(id);
-        List<CommentDTO> comments = commentDao.getAllCommentsByThreadId(id);
-        return new ThreadWithCommentsDTO(thread, comments);
+        return THREAD_DAO.getThreadById(id);
     }
 
     @Override
     public int updateThread(ThreadDTO thread) {
-        return threadDao.updateThread(thread);
+        return THREAD_DAO.updateThread(thread);
     }
 
     @Override
     public void deleteThread(int id) {
-        threadDao.deleteThread(id);
+        THREAD_DAO.deleteThread(id);
     }
 
     @Override
     public int createComment(CommentDTO comment) {
-        return commentDao.createComment(comment);
+        return COMMENT_DAO.createComment(comment);
     }
 
     @Override
     public int updateComment(CommentDTO comment) {
-        return commentDao.updateComment(comment);
+        return COMMENT_DAO.updateComment(comment);
     }
 
     @Override
     public void deleteComment(int id) {
-        commentDao.deleteComment(id);
+        COMMENT_DAO.deleteComment(id);
     }
 }

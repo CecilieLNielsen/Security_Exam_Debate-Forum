@@ -1,5 +1,6 @@
 package Models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ThreadWithCommentsDTO {
@@ -10,6 +11,15 @@ public class ThreadWithCommentsDTO {
     public ThreadWithCommentsDTO(ThreadDTO thread, List<CommentDTO> comments) {
         this.thread = thread;
         this.comments = comments;
+    }
+
+    public ThreadWithCommentsDTO(Thread thread) {
+        this.thread = new ThreadDTO(thread);
+        List<CommentDTO> tempComments = new ArrayList<>();
+        for (Comment comment : thread.getComments()) {
+            tempComments.add(new CommentDTO(comment));
+        }
+        this.comments = tempComments;
     }
 
     public ThreadDTO getThread() {

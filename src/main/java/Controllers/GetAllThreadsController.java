@@ -1,9 +1,7 @@
 package Controllers;
 
 import Models.ThreadDTO;
-import Service.ILoginService;
 import Service.IThreadService;
-import Service.LoginService;
 import Service.Service;
 
 import javax.servlet.ServletException;

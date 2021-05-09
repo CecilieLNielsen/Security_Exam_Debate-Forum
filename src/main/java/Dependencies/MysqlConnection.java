@@ -1,15 +1,21 @@
 package Dependencies;
 
-import java.sql.Connection;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class MysqlConnection implements IMysqlConnection {
     @Override
-    public Connection connect() {
-        return null;
-    }
-
-    @Override
-    public boolean disconnect() {
-        return false;
+    public EntityManagerFactory createEntityManagerFactory() {
+        EntityManagerFactory emf;
+        try {
+            emf = Persistence.createEntityManagerFactory("pu", null);
+        } catch (javax.persistence.PersistenceException ex) {
+            System.out.println("##########################################################");
+            System.out.println("######      Error creating a persistence Unit       ######");
+            System.out.println("##########################################################");
+            ex.printStackTrace();
+            throw ex;
+        }
+        return emf;
     }
 }

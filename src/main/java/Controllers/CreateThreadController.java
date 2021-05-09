@@ -1,7 +1,6 @@
 package Controllers;
 
 import Models.ThreadDTO;
-import Models.ThreadWithCommentsDTO;
 import Service.IThreadService;
 import Service.Service;
 

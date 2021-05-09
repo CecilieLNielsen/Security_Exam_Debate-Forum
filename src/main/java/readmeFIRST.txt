@@ -32,3 +32,27 @@ class MysqlBasicMethodsImpl implements IMysqlBasicMethods { ... }
 This will ensure that you can use the same implemention even if you change the database. The same priciple applies for all other implementations.
 
 
+Package Controllers.
+* contains servlets aka. controllers
+* create controllers for different paths
+
+Package Dependencies
+* contains classes such as database connection
+* other classes with an importance for running the app
+
+Package Models
+* contains POJO objects
+
+Package Persistence.DAO:
+* this is the place for all DAO classes
+
+Package Persistence:
+* The raw database work happens here
+* SQL sentences are here
+
+Package Service:
+* all business logic here
+
+Package Utils:
+* all global util
+* test data

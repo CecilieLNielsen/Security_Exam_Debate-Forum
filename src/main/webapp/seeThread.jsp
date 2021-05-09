@@ -13,10 +13,12 @@
     <title>Thread</title>
 </head>
 <body>
-<h1><%= threadWithComments.getThread().getTitle() %></h1>
+<h1><%= threadWithComments.getThread().getTitle() %>
+</h1>
 <div class="card">
     <div class="card-body">
-        <p><%= threadWithComments.getThread().getDescription() %></p>
+        <p><%= threadWithComments.getThread().getDescription() %>
+        </p>
 
         <form name="DeleteThreadById" action="<%= request.getContextPath() %>/DeleteThread" method="POST">
             <input type="hidden" name="id" value="<%= threadWithComments.getThread().getId() %>">

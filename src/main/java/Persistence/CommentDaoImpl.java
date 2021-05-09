@@ -1,63 +1,78 @@
 package Persistence;
 
+import Models.Comment;
 import Models.CommentDTO;
-import Models.ThreadDTO;
 import Persistence.DAO.CommentDao;
 
-import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 public class CommentDaoImpl implements CommentDao {
 
+    /**
+     * The singleton instance
+     */
     private static CommentDaoImpl commentDaoImpl;
-    private List<CommentDTO> comments;
+    private static EntityManagerFactory emf;
 
-    private CommentDaoImpl() {
-        // Private contructor for singleton pattern
+    /**
+     * Private constructor to ensure singleton pattern
+     */
+    private CommentDaoImpl(EntityManagerFactory _emf) {
+        emf = _emf;
     }
 
-    public static CommentDaoImpl getInstance() {
+    public static CommentDaoImpl getInstance(EntityManagerFactory _emf) {
         if (commentDaoImpl == null)
-            commentDaoImpl = new CommentDaoImpl();
+            commentDaoImpl = new CommentDaoImpl(_emf);
         return commentDaoImpl;
+    }
+
+    private EntityManager getEntityManager() {
+        return emf.createEntityManager();
     }
 
     @Override
     public int createComment(CommentDTO comment) {
-        int newCommentId = 1; // Start ID hvis ingen kommentarer findes i systemet
-        if (!comments.isEmpty()) { // Tjekker på om listen ikke er tom
-            int lastCommentIndex = comments.size() - 1; // Henter index plads på den seneste kommentar
-            int lastCommentId = comments.get(lastCommentIndex).getId(); // Henter ID ud fra den givne indexplads
-            newCommentId = lastCommentId + 1; // Autoincrement ID på næste kommentar
+        EntityManager em = getEntityManager();
+        Comment commentEntity = new Comment(comment);
+        try {
+            em.getTransaction().begin();
+            em.persist(commentEntity);
+            em.getTransaction().commit();
+            return commentEntity.getId();
+        } finally {
+            em.close();
         }
-        comment.setId(newCommentId);
-        comments.add(comment);
-        return comment.getId();
-    }
-
-    @Override
-    public List<CommentDTO> getAllCommentsByThreadId(int threadId) {
-        return comments;
     }
 
     @Override
     public int updateComment(CommentDTO updatedComment) {
-        for (CommentDTO existingComment : comments) {
-            if (existingComment.getId() == updatedComment.getId()) {
-                existingComment.setAuthor(updatedComment.getAuthor());
-                existingComment.setDateOfUpdate(updatedComment.getDateOfUpdate());
-                return existingComment.getId();
-            }
+        EntityManager em = getEntityManager();
+        Comment comment = em.find(Comment.class, updatedComment.getId());
+        comment.setAll(updatedComment);
+        try {
+            em.getTransaction().begin();
+            em.merge(comment);
+            em.getTransaction().commit();
+            return comment.getId();
+        } finally {
+            em.close();
         }
-        return -1;
     }
 
     @Override
     public void deleteComment(int id) {
-        for (int i = 0; i < comments.size(); i++) {
-            CommentDTO comment = comments.get(i);
-            if (comment.getId() == id) {
-                comments.remove(i);
-            }
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            Query query = em.createQuery("DELETE FROM Comment c WHERE c.id = :id");
+            query.setParameter("id", id);
+            query.executeUpdate();
+            em.getTransaction().commit();
+        } finally {
+            em.close();
         }
     }
 }

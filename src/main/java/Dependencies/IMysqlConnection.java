@@ -1,8 +1,7 @@
 package Dependencies;
 
-import java.sql.Connection;
+import javax.persistence.EntityManagerFactory;
 
 public interface IMysqlConnection {
-    public Connection connect(); // remember correct arguments
-    public boolean disconnect();
+    EntityManagerFactory createEntityManagerFactory();
 }

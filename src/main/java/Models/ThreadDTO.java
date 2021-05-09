@@ -1,7 +1,6 @@
 package Models;
 
 import java.util.Date;
-import java.util.Objects;
 
 public class ThreadDTO {
 
@@ -13,12 +12,30 @@ public class ThreadDTO {
     private String dateOfCreation;
     private String dateOfUpdate;
 
+    /**
+     * Constructor to convert thread entity to thread DTO
+     *
+     * @param thread
+     */
+    public ThreadDTO(Thread thread) {
+        this.id = thread.getId();
+        this.title = thread.getTitle();
+        this.category = thread.getCategory();
+        this.description = thread.getDescription();
+        this.author = thread.getAuthor();
+        this.dateOfCreation = thread.getDateOfCreation();
+        this.dateOfUpdate = thread.getDateOfUpdate();
+    }
+
+    /**
+     * Use for create new thread manual
+     */
     public ThreadDTO(int id, String title, String category, String author, String description, String dateOfCreation, String dateOfUpdate) {
         this.id = id;
         this.title = title;
         this.category = category;
-        this.description = description;
         this.author = author;
+        this.description = description;
         this.dateOfCreation = dateOfCreation;
         this.dateOfUpdate = dateOfUpdate;
     }
