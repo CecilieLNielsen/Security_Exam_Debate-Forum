@@ -1,4 +1,4 @@
-<%@ page import="Models.ThreadWithCommentsDTO" %>
+<%@ page import="Models.DTO.ThreadWithCommentsDTO" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

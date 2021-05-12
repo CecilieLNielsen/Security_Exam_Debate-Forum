@@ -1,7 +1,7 @@
 package Persistence;
 
-import Models.Comment;
-import Models.CommentDTO;
+import Models.DTO.CommentDTO;
+import Models.Entities.Comment;
 import Persistence.DAO.CommentDao;
 
 import javax.persistence.EntityManager;

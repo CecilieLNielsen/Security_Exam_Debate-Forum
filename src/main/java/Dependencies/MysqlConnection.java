@@ -13,7 +13,6 @@ public class MysqlConnection implements IMysqlConnection {
             System.out.println("##########################################################");
             System.out.println("######      Error creating a persistence Unit       ######");
             System.out.println("##########################################################");
-            ex.printStackTrace();
             throw ex;
         }
         return emf;

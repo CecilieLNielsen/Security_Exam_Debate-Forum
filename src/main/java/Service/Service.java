@@ -1,9 +1,9 @@
 package Service;
 
 import Dependencies.MysqlConnection;
-import Models.CommentDTO;
-import Models.ThreadDTO;
-import Models.ThreadWithCommentsDTO;
+import Models.DTO.CommentDTO;
+import Models.DTO.ThreadDTO;
+import Models.DTO.ThreadWithCommentsDTO;
 import Persistence.CommentDaoImpl;
 import Persistence.DAO.CommentDao;
 import Persistence.DAO.ThreadDao;

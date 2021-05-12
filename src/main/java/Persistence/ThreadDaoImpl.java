@@ -1,8 +1,8 @@
 package Persistence;
 
-import Models.Thread;
-import Models.ThreadDTO;
-import Models.ThreadWithCommentsDTO;
+import Models.DTO.ThreadDTO;
+import Models.DTO.ThreadWithCommentsDTO;
+import Models.Entities.Thread;
 import Persistence.DAO.ThreadDao;
 
 import javax.persistence.EntityManager;

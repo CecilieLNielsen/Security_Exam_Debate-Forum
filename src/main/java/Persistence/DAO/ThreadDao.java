@@ -1,7 +1,7 @@
 package Persistence.DAO;
 
-import Models.ThreadDTO;
-import Models.ThreadWithCommentsDTO;
+import Models.DTO.ThreadDTO;
+import Models.DTO.ThreadWithCommentsDTO;
 
 import java.util.List;
 

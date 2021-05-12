@@ -1,18 +1,18 @@
 package Service;
 
-import Models.ThreadDTO;
-import Models.ThreadWithCommentsDTO;
+import Models.DTO.ThreadDTO;
+import Models.DTO.ThreadWithCommentsDTO;
 
 import java.util.List;
 
 public interface IThreadService {
-    public int createThread(ThreadDTO thread);
+    int createThread(ThreadDTO thread);
 
-    public List<ThreadDTO> getAllThreads();
+    List<ThreadDTO> getAllThreads();
 
-    public ThreadWithCommentsDTO getThreadWithCommentsById(int id);
+    ThreadWithCommentsDTO getThreadWithCommentsById(int id);
 
-    public int updateThread(ThreadDTO thread);
+    int updateThread(ThreadDTO thread);
 
-    public void deleteThread(int id);
+    void deleteThread(int id);
 }

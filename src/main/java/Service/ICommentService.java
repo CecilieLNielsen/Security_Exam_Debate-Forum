@@ -1,11 +1,11 @@
 package Service;
 
-import Models.CommentDTO;
+import Models.DTO.CommentDTO;
 
 public interface ICommentService {
-    public int createComment(CommentDTO comment);
+    int createComment(CommentDTO comment);
 
-    public int updateComment(CommentDTO comment);
+    int updateComment(CommentDTO comment);
 
-    public void deleteComment(int id);
+    void deleteComment(int id);
 }

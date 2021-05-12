@@ -1,4 +1,6 @@
-package Models;
+package Models.Entities;
+
+import Models.DTO.CommentDTO;
 
 import javax.persistence.*;
 
@@ -9,7 +11,8 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String author;
+    @ManyToOne
+    private User author;
     private String description;
     private String dateOfCreation;
     private String dateOfUpdate;
@@ -32,8 +35,19 @@ public class Comment {
         setAll(commentDTO);
     }
 
+    /**
+     * Constructor for creating a comment manual
+     *
+     * @param author
+     * @param description
+     */
+    public Comment(User author, String description) {
+        setAuthor(author);
+        this.description = description;
+    }
+
     public void setAll(CommentDTO commentDTO) {
-        this.author = commentDTO.getAuthor();
+        //this.author = commentDTO.getAuthor();
         this.description = commentDTO.getDescription();
         this.dateOfCreation = commentDTO.getDateOfCreation();
         this.dateOfUpdate = commentDTO.getDateOfUpdate();
@@ -47,11 +61,13 @@ public class Comment {
         this.id = id;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
+        if (author != null)
+            author.addComment(this);
         this.author = author;
     }
 

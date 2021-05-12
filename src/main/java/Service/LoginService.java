@@ -5,7 +5,7 @@ import Persistence.LoginDaoImpl;
 
 public class LoginService implements ILoginService {
 
-    private LoginDao ldi;
+    private final LoginDao ldi;
 
     public LoginService() {
         ldi = new LoginDaoImpl();

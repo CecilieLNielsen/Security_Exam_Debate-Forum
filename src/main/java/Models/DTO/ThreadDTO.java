@@ -1,4 +1,6 @@
-package Models;
+package Models.DTO;
+
+import Models.Entities.Thread;
 
 import java.util.Date;
 
@@ -22,7 +24,7 @@ public class ThreadDTO {
         this.title = thread.getTitle();
         this.category = thread.getCategory();
         this.description = thread.getDescription();
-        this.author = thread.getAuthor();
+        //this.author = thread.getAuthor();
         this.dateOfCreation = thread.getDateOfCreation();
         this.dateOfUpdate = thread.getDateOfUpdate();
     }

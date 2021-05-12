@@ -1,6 +1,6 @@
 package Persistence.DAO;
 
-import Models.CommentDTO;
+import Models.DTO.CommentDTO;
 
 public interface CommentDao {
     int createComment(CommentDTO comment);

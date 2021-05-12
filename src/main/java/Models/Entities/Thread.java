@@ -1,4 +1,6 @@
-package Models;
+package Models.Entities;
+
+import Models.DTO.ThreadDTO;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,12 +15,13 @@ public class Thread {
     private int id;
     private String title;
     private String category;
-    private String author;
+    @ManyToOne
+    private User author;
     private String description;
     private String dateOfCreation;
     private String dateOfUpdate;
-    @OneToMany(mappedBy = "Thread", cascade = {CascadeType.PERSIST})
-    private List<Comment> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "thread", cascade = {CascadeType.REMOVE})
+    private List<Comment> comments;
 
     /**
      * Empty constructor for JPA
@@ -37,13 +40,28 @@ public class Thread {
     }
 
     /**
+     * Constructor for creating a thread manual
+     *
+     * @param title
+     * @param category
+     * @param author
+     * @param description
+     */
+    public Thread(String title, String category, User author, String description) {
+        this.title = title;
+        this.category = category;
+        setAuthor(author);
+        this.description = description;
+    }
+
+    /**
      * Use this instead of set methods
      */
     public void setAll(ThreadDTO threadDTO) {
         this.title = threadDTO.getTitle();
         this.category = threadDTO.getCategory();
         this.description = threadDTO.getDescription();
-        this.author = threadDTO.getAuthor();
+        //this.author = threadDTO.getAuthor();
         this.dateOfCreation = threadDTO.getDateOfCreation();
         this.dateOfUpdate = threadDTO.getDateOfUpdate();
     }
@@ -72,11 +90,13 @@ public class Thread {
         this.category = category;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
+        if (author != null)
+            author.addThread(this);
         this.author = author;
     }
 
@@ -113,8 +133,11 @@ public class Thread {
     }
 
     public void addComment(Comment comment) {
-        this.comments.add(comment);
-        comment.setThread(this);
+        if (comment != null)
+            comment.setThread(this);
+        if (comments == null)
+            comments = new ArrayList<>();
+        comments.add(comment);
     }
 }
 

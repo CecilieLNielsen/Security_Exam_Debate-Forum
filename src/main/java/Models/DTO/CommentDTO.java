@@ -1,4 +1,6 @@
-package Models;
+package Models.DTO;
+
+import Models.Entities.Comment;
 
 import java.util.Date;
 
@@ -17,7 +19,7 @@ public class CommentDTO {
      */
     public CommentDTO(Comment comment) {
         this.id = comment.getId();
-        this.author = comment.getAuthor();
+        //this.author = comment.getAuthor();
         this.description = comment.getDescription();
         this.dateOfCreation = comment.getDateOfCreation();
         this.dateOfUpdate = comment.getDateOfUpdate();

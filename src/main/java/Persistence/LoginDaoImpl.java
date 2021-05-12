@@ -2,12 +2,12 @@ package Persistence;
 
 import Dependencies.IMysqlConnection;
 import Dependencies.MysqlConnection;
-import Models.User;
+import Models.Entities.User;
 import Persistence.DAO.LoginDao;
 
 public class LoginDaoImpl implements LoginDao {
 
-    private IMysqlConnection imc;
+    private final IMysqlConnection imc;
 
     public LoginDaoImpl() {
         this.imc = new MysqlConnection(); // loose coupling

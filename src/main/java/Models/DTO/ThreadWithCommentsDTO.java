@@ -1,12 +1,15 @@
-package Models;
+package Models.DTO;
+
+import Models.Entities.Comment;
+import Models.Entities.Thread;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ThreadWithCommentsDTO {
 
-    private ThreadDTO thread;
-    private List<CommentDTO> comments;
+    private final ThreadDTO thread;
+    private final List<CommentDTO> comments;
 
     public ThreadWithCommentsDTO(ThreadDTO thread, List<CommentDTO> comments) {
         this.thread = thread;

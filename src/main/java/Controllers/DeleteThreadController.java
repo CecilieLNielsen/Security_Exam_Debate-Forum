@@ -1,6 +1,6 @@
 package Controllers;
 
-import Models.ThreadDTO;
+import Models.DTO.ThreadDTO;
 import Service.IThreadService;
 import Service.Service;
 
