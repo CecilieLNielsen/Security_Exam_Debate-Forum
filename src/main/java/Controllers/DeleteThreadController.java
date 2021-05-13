@@ -27,8 +27,8 @@ public class DeleteThreadController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         IThreadService threadService = Service.getInstance();
         threadService.deleteThread(id);
-        List<ThreadDTO> allThreads = threadService.getAllThreads();
 
+        List<ThreadDTO> allThreads = threadService.getAllThreads();
         HttpSession session = request.getSession();
         session.setAttribute("allThreads", allThreads);
         request.getRequestDispatcher("/allThreads.jsp").forward(request, response);

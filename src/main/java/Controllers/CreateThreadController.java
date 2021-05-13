@@ -24,16 +24,15 @@ public class CreateThreadController extends HttpServlet {
         //    request.getRequestDispatcher("/index.jsp").forward(request, response);
         //}
 
-        String author = "TODO: Implement when login is ready";//request.getParameter("author");
         String title = request.getParameter("title");
         String category = request.getParameter("category");
         String description = request.getParameter("description");
-        ThreadDTO thread = new ThreadDTO(title, category, author, description);
+        ThreadDTO thread = new ThreadDTO(title, category, description);
 
         IThreadService threadService = Service.getInstance();
         int threadId = threadService.createThread(thread);
-        List<ThreadDTO> allThreads = threadService.getAllThreads();
 
+        List<ThreadDTO> allThreads = threadService.getAllThreads();
         HttpSession session = request.getSession();
         session.setAttribute("threadId", threadId);
         session.setAttribute("allThreads", allThreads);

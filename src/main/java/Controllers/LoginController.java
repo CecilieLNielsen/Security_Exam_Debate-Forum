@@ -26,10 +26,8 @@ public class LoginController extends HttpServlet {
         // TODO: Create token or something like
 
         if (isValid) {
-            request.getSession().setAttribute("login", true);
             request.getRequestDispatcher("/allThreads.jsp").forward(request, response);
         } else {
-            request.getSession().setAttribute("login", false);
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }

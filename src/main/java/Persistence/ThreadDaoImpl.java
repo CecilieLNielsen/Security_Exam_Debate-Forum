@@ -3,6 +3,7 @@ package Persistence;
 import Models.DTO.ThreadDTO;
 import Models.DTO.ThreadWithCommentsDTO;
 import Models.Entities.Thread;
+import Models.Entities.User;
 import Persistence.DAO.ThreadDao;
 
 import javax.persistence.EntityManager;
@@ -46,6 +47,9 @@ public class ThreadDaoImpl implements ThreadDao {
     public int createThread(ThreadDTO thread) {
         EntityManager em = getEntityManager();
         Thread threadEntity = new Thread(thread);
+        // TODO: Remove hardcoded value and user logged in user
+        threadEntity.setAuthor(em.find(User.class, 5));
+        // User with id 5 should be Bertilda Monteson
         try {
             em.getTransaction().begin();
             em.persist(threadEntity);
@@ -101,11 +105,10 @@ public class ThreadDaoImpl implements ThreadDao {
     @Override
     public void deleteThread(int id) {
         EntityManager em = emf.createEntityManager();
+        Thread thread = em.find(Thread.class, id);
         try {
             em.getTransaction().begin();
-            Query query = em.createQuery("DELETE FROM Thread t WHERE t.id = :id");
-            query.setParameter("id", id);
-            query.executeUpdate();
+            em.remove(thread);
             em.getTransaction().commit();
         } finally {
             em.close();

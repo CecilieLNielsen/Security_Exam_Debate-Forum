@@ -34,10 +34,9 @@ public class ThreadDTO {
     /**
      * Use for create new thread
      */
-    public ThreadDTO(String title, String category, String author, String description) {
+    public ThreadDTO(String title, String category, String description) {
         this.title = title;
         this.category = category;
-        this.author = author;
         this.description = description;
         String currentDate = new Date().toString();
         this.dateOfCreation = currentDate;

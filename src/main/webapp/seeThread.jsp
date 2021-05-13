@@ -39,9 +39,13 @@
                     </small>
                 </div>
                 <form name="DeleteThreadById" action="<%= request.getContextPath() %>/DeleteThread"
-                      method="POST">
+                      method="POST" id="deleteThread">
                     <input type="hidden" name="id" value="<%= threadWithComments.getThread().getId() %>">
-                    <input type="submit" value="Delete thread"/>
+                    <a href="javascript:{}" onclick="document.getElementById('deleteThread').submit();"
+                       class="forum-item-title">
+                        <i class="fa fa-trash"></i>
+                        Delete thread
+                    </a>
                 </form>
             </div>
         </div>
