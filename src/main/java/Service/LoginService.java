@@ -1,19 +1,35 @@
 package Service;
 
+import Dependencies.MysqlConnection;
+import Models.Beans.LoginBean;
+import Persistence.CommentDaoImpl;
 import Persistence.DAO.LoginDao;
 import Persistence.LoginDaoImpl;
+import Persistence.ThreadDaoImpl;
+import Service.Interfaces.ILoginService;
+import Utils.BCryptUtil;
+
+import javax.persistence.EntityManagerFactory;
 
 public class LoginService implements ILoginService {
 
-    private final LoginDao ldi;
+    private static LoginService service;
+    private final LoginDao LOGIN_DAO;
 
-    public LoginService() {
-        ldi = new LoginDaoImpl();
+    private LoginService() {
+        EntityManagerFactory emf = new MysqlConnection().createEntityManagerFactory();
+        LOGIN_DAO = LoginDaoImpl.getInstance(emf);
+    }
+
+    public static LoginService getInstance() {
+        if (service == null)
+            service = new LoginService();
+        return service;
     }
 
     @Override
-    public boolean verifyCredentials(String username, String password) {
-        return false;
+    public boolean verifyCredentials(LoginBean loginCredentials) {
+        return LOGIN_DAO.verifyCredentials(loginCredentials);
     }
 
     @Override

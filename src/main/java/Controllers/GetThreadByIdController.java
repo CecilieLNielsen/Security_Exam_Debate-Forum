@@ -1,7 +1,7 @@
 package Controllers;
 
 import Models.DTO.ThreadWithCommentsDTO;
-import Service.IThreadService;
+import Service.Interfaces.IThreadService;
 import Service.Service;
 
 import javax.servlet.ServletException;
@@ -15,11 +15,12 @@ import java.io.IOException;
 
 @WebServlet(name = "GetThreadById")
 public class GetThreadByIdController extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Check if user is logged in - if not redirect to login page
         //ILoginService loginService = new LoginService();
         //if (!loginService.isLoggedin()) {
-        //    request.getRequestDispatcher("/logintemp.jsp").forward(request, response);
+        //    request.getRequestDispatcher("/index.jsp").forward(request, response);
         //}
 
         // Get all threads and redirect to all threads page

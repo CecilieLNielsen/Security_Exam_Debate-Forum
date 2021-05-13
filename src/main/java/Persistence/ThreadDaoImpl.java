@@ -17,7 +17,7 @@ public class ThreadDaoImpl implements ThreadDao {
     /**
      * The singleton instance
      */
-    private static ThreadDaoImpl threadDaoImpl;
+    private static ThreadDaoImpl instance;
     private static EntityManagerFactory emf;
 
     /**
@@ -33,9 +33,9 @@ public class ThreadDaoImpl implements ThreadDao {
      * @return the singleton instance
      */
     public static ThreadDaoImpl getInstance(EntityManagerFactory _emf) {
-        if (threadDaoImpl == null)
-            threadDaoImpl = new ThreadDaoImpl(_emf);
-        return threadDaoImpl;
+        if (instance == null)
+            instance = new ThreadDaoImpl(_emf);
+        return instance;
     }
 
     private EntityManager getEntityManager() {

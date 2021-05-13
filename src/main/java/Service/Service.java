@@ -8,6 +8,8 @@ import Persistence.CommentDaoImpl;
 import Persistence.DAO.CommentDao;
 import Persistence.DAO.ThreadDao;
 import Persistence.ThreadDaoImpl;
+import Service.Interfaces.ICommentService;
+import Service.Interfaces.IThreadService;
 
 import javax.persistence.EntityManagerFactory;
 import java.util.List;

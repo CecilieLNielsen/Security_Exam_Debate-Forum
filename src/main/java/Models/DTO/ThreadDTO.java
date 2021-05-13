@@ -13,6 +13,7 @@ public class ThreadDTO {
     private String description;
     private String dateOfCreation;
     private String dateOfUpdate;
+    private int comments;
 
     /**
      * Constructor to convert thread entity to thread DTO
@@ -24,22 +25,10 @@ public class ThreadDTO {
         this.title = thread.getTitle();
         this.category = thread.getCategory();
         this.description = thread.getDescription();
-        //this.author = thread.getAuthor();
+        this.author = thread.getAuthor().getUsername();
         this.dateOfCreation = thread.getDateOfCreation();
         this.dateOfUpdate = thread.getDateOfUpdate();
-    }
-
-    /**
-     * Use for create new thread manual
-     */
-    public ThreadDTO(int id, String title, String category, String author, String description, String dateOfCreation, String dateOfUpdate) {
-        this.id = id;
-        this.title = title;
-        this.category = category;
-        this.author = author;
-        this.description = description;
-        this.dateOfCreation = dateOfCreation;
-        this.dateOfUpdate = dateOfUpdate;
+        this.comments = thread.getComments().size();
     }
 
     /**
@@ -56,7 +45,7 @@ public class ThreadDTO {
     }
 
     /**
-     * Use for update thread
+     * Use for updating a thread
      */
     public ThreadDTO(int id, String title, String category, String author, String description) {
         this.id = id;
@@ -71,40 +60,20 @@ public class ThreadDTO {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getDateOfCreation() {
@@ -113,17 +82,5 @@ public class ThreadDTO {
 
     public String getDateOfUpdate() {
         return dateOfUpdate;
-    }
-
-    public void setDateOfUpdate(String dateOfUpdate) {
-        this.dateOfUpdate = dateOfUpdate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ThreadDTO threadDTO = (ThreadDTO) o;
-        return id == threadDTO.id;
     }
 }

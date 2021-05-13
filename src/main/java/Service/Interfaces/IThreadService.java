@@ -1,4 +1,4 @@
-package Service;
+package Service.Interfaces;
 
 import Models.DTO.ThreadDTO;
 import Models.DTO.ThreadWithCommentsDTO;

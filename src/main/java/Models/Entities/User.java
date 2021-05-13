@@ -51,9 +51,9 @@ public class User {
      * @param userDTO
      */
     public User(UserDTO userDTO) {
-        email = userDTO.getEmail();
-        username = userDTO.getUsername();
-        hashedPassword = userDTO.getHashedPassword();
+        this.email = userDTO.getEmail();
+        this.username = userDTO.getUsername();
+        this.hashedPassword = userDTO.getHashedPassword();
     }
 
     public int getId() {

@@ -19,22 +19,12 @@ public class CommentDTO {
      */
     public CommentDTO(Comment comment) {
         this.id = comment.getId();
-        //this.author = comment.getAuthor();
+        this.author = comment.getAuthor().getUsername();
         this.description = comment.getDescription();
         this.dateOfCreation = comment.getDateOfCreation();
         this.dateOfUpdate = comment.getDateOfUpdate();
     }
 
-    /**
-     * Use for create new thread manual
-     */
-    public CommentDTO(int id, String author, String description, String dateOfCreation, String dateOfUpdate) {
-        this.id = id;
-        this.author = author;
-        this.description = description;
-        this.dateOfCreation = dateOfCreation;
-        this.dateOfUpdate = dateOfUpdate;
-    }
 
     /**
      * Use for create new comment
@@ -48,7 +38,7 @@ public class CommentDTO {
     }
 
     /**
-     * Use for update comment
+     * Use for updating a comment
      */
     public CommentDTO(int id, String author, String description) {
         this.id = id;
@@ -69,31 +59,15 @@ public class CommentDTO {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getDateOfCreation() {
         return dateOfCreation;
     }
 
-    public void setDateOfCreation(String dateOfCreation) {
-        this.dateOfCreation = dateOfCreation;
-    }
-
     public String getDateOfUpdate() {
         return dateOfUpdate;
-    }
-
-    public void setDateOfUpdate(String dateOfUpdate) {
-        this.dateOfUpdate = dateOfUpdate;
     }
 }

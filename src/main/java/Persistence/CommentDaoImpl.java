@@ -13,7 +13,7 @@ public class CommentDaoImpl implements CommentDao {
     /**
      * The singleton instance
      */
-    private static CommentDaoImpl commentDaoImpl;
+    private static CommentDaoImpl instance;
     private static EntityManagerFactory emf;
 
     /**
@@ -24,9 +24,9 @@ public class CommentDaoImpl implements CommentDao {
     }
 
     public static CommentDaoImpl getInstance(EntityManagerFactory _emf) {
-        if (commentDaoImpl == null)
-            commentDaoImpl = new CommentDaoImpl(_emf);
-        return commentDaoImpl;
+        if (instance == null)
+            instance = new CommentDaoImpl(_emf);
+        return instance;
     }
 
     private EntityManager getEntityManager() {

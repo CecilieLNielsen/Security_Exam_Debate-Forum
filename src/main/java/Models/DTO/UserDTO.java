@@ -16,13 +16,14 @@ public class UserDTO {
      * @param user
      */
     public UserDTO(User user) {
-        email = user.getEmail();
-        username = user.getUsername();
-        role = new RoleDTO(user.getRole());
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.username = user.getUsername();
+        this.role = new RoleDTO(user.getRole());
     }
 
     /**
-     * Use for create new thread manual
+     * Use for create new user
      */
     public UserDTO(String email, String username, String hashedPassword) {
         this.email = email;
@@ -34,32 +35,16 @@ public class UserDTO {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getHashedPassword() {
         return hashedPassword;
-    }
-
-    public void setHashedPassword(String hashedPassword) {
-        this.hashedPassword = hashedPassword;
     }
 
     public RoleDTO getRole() {

@@ -1,7 +1,7 @@
 package Controllers;
 
 import Models.DTO.ThreadDTO;
-import Service.IThreadService;
+import Service.Interfaces.IThreadService;
 import Service.Service;
 
 import javax.servlet.ServletException;
@@ -16,11 +16,12 @@ import java.util.List;
 
 @WebServlet(name = "CreateThread")
 public class CreateThreadController extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Check if user is logged in - if not redirect to login page
         //ILoginService loginService = new LoginService();
         //if (!loginService.isLoggedin()) {
-        //    request.getRequestDispatcher("/logintemp.jsp").forward(request, response);
+        //    request.getRequestDispatcher("/index.jsp").forward(request, response);
         //}
 
         String author = "TODO: Implement when login is ready";//request.getParameter("author");
@@ -37,6 +38,6 @@ public class CreateThreadController extends HttpServlet {
         session.setAttribute("threadId", threadId);
         session.setAttribute("allThreads", allThreads);
 
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/allThreads.jsp").forward(request, response);
     }
 }

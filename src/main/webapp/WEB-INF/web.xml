@@ -7,13 +7,13 @@
 
     <!-- login sevles -->
     <servlet>
-        <servlet-name>SomeController</servlet-name>
-        <servlet-class>Controllers.SomeController</servlet-class>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>Controllers.LoginController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>SomeController</servlet-name>
-        <url-pattern>/</url-pattern>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/Login</url-pattern>
     </servlet-mapping>
 
     <!-- Add a pair of following for each new controller -->
