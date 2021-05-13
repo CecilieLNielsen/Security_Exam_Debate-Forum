@@ -21,9 +21,9 @@ public class User {
     private String hashedPassword;
     @ManyToOne
     private Role role;
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author", cascade = {CascadeType.REMOVE})
     private List<Thread> threads;
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author", cascade = {CascadeType.REMOVE})
     private List<Comment> comments;
 
     /**
@@ -33,18 +33,7 @@ public class User {
     }
 
     /**
-     * Constructor for converting a userDTO into a user entity
-     *
-     * @param userDTO
-     */
-    public User(UserDTO userDTO) {
-        email = userDTO.getEmail();
-        username = userDTO.getUsername();
-        hashedPassword = userDTO.getHashedPassword();
-    }
-
-    /**
-     * Constructor for creating a user manual
+     * Constructor for manual creating a user
      *
      * @param email
      * @param username
@@ -54,6 +43,17 @@ public class User {
         this.email = email;
         this.username = username;
         this.hashedPassword = hashedPassword;
+    }
+
+    /**
+     * Constructor for converting a user DTO into a user entity
+     *
+     * @param userDTO
+     */
+    public User(UserDTO userDTO) {
+        email = userDTO.getEmail();
+        username = userDTO.getUsername();
+        hashedPassword = userDTO.getHashedPassword();
     }
 
     public int getId() {

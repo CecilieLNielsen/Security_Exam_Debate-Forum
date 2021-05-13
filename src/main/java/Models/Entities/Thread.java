@@ -13,12 +13,17 @@ public class Thread {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false)
     private String title;
+    @Column(nullable = false)
     private String category;
     @ManyToOne
     private User author;
+    @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
     private String dateOfCreation;
+    @Column(nullable = false)
     private String dateOfUpdate;
     @OneToMany(mappedBy = "thread", cascade = {CascadeType.REMOVE})
     private List<Comment> comments;
@@ -30,17 +35,7 @@ public class Thread {
     }
 
     /**
-     * Constructor for converting a threadDTO into a thread entity
-     *
-     * @param threadDTO
-     */
-    public Thread(ThreadDTO threadDTO) {
-        this.id = threadDTO.getId();
-        setAll(threadDTO);
-    }
-
-    /**
-     * Constructor for creating a thread manual
+     * Constructor for manual creating a thread
      *
      * @param title
      * @param category
@@ -52,6 +47,16 @@ public class Thread {
         this.category = category;
         setAuthor(author);
         this.description = description;
+    }
+
+    /**
+     * Constructor for converting a thread DTO into a thread entity
+     *
+     * @param threadDTO
+     */
+    public Thread(ThreadDTO threadDTO) {
+        this.id = threadDTO.getId();
+        setAll(threadDTO);
     }
 
     /**

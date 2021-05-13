@@ -67,8 +67,6 @@ public class UserDTO {
     }
 
     public void setRole(RoleDTO role) {
-        if (role != null)
-            role.addUser(this);
         this.role = role;
     }
 }

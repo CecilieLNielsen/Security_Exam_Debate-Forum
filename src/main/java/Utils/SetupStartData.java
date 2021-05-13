@@ -62,7 +62,6 @@ public class SetupStartData {
         thread_03.addComment(comment_05);
         thread_03.addComment(comment_06);
 
-
         em.getTransaction().begin();
         em.persist(comment_01);
         em.persist(comment_02);

@@ -25,24 +25,22 @@ public class Role {
     }
 
     /**
-     * Constructor for creating a role ma
+     * Constructor for manual creating a role
      *
      * @param role
      */
     public Role(String role) {
         this.role = role;
-        this.users = new ArrayList<>();
     }
 
     /**
-     * Constructor for converting a roleDTO into a role entity
+     * Constructor for converting a role DTO into a role entity
      *
      * @param roleDTO
      */
     public Role(RoleDTO roleDTO) {
         this.id = roleDTO.getId();
         this.role = roleDTO.getRole();
-        this.users = new ArrayList<>();
     }
 
     public int getId() {

@@ -13,8 +13,11 @@ public class Comment {
     private int id;
     @ManyToOne
     private User author;
+    @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
     private String dateOfCreation;
+    @Column(nullable = false)
     private String dateOfUpdate;
     @ManyToOne
     private Thread thread;
@@ -26,17 +29,7 @@ public class Comment {
     }
 
     /**
-     * Constructor for converting a commentDTO into a comment entity
-     *
-     * @param commentDTO
-     */
-    public Comment(CommentDTO commentDTO) {
-        this.id = commentDTO.getId();
-        setAll(commentDTO);
-    }
-
-    /**
-     * Constructor for creating a comment manual
+     * Constructor for manual creating a comment
      *
      * @param author
      * @param description
@@ -44,6 +37,16 @@ public class Comment {
     public Comment(User author, String description) {
         setAuthor(author);
         this.description = description;
+    }
+
+    /**
+     * Constructor for converting a comment DTO into a comment entity
+     *
+     * @param commentDTO
+     */
+    public Comment(CommentDTO commentDTO) {
+        this.id = commentDTO.getId();
+        setAll(commentDTO);
     }
 
     public void setAll(CommentDTO commentDTO) {
