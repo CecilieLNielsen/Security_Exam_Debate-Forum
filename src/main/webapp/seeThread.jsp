@@ -14,7 +14,8 @@
           integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous"/>
     <link rel="stylesheet" href="css/seeThread.css">
     <% ThreadWithCommentsDTO threadWithComments = (ThreadWithCommentsDTO) request.getSession().getAttribute("threadWithComments"); %>
-    <title><%= threadWithComments.getThread().getTitle() %></title>
+    <title><%= threadWithComments.getThread().getTitle() %>
+    </title>
     <% UserBean userBean = (UserBean) session.getAttribute("userBean"); %>
     <%
         if (userBean == null) {
@@ -44,6 +45,7 @@
                         <%= threadWithComments.getThread().getDateOfUpdate() %>
                     </small>
                 </div>
+                <% if ("ADMIN".equals(userBean.getRole()) || userBean.getUsername() == threadWithComments.getThread().getAuthor()) { %>
                 <form name="DeleteThreadById" action="<%= request.getContextPath() %>/DeleteThread"
                       method="POST" id="deleteThread">
                     <input type="hidden" name="id" value="<%= threadWithComments.getThread().getId() %>">
@@ -53,6 +55,7 @@
                         Delete thread
                     </a>
                 </form>
+                <% } %>
             </div>
         </div>
     </div>
@@ -64,11 +67,11 @@
                     <div class="media forum-item">
                         <div class="media-body">
                             <p class="text-secondary">
-                                ${comment.description}
+                                    ${comment.description}
                             </p>
                             <small>${comment.author} replied ${comment.dateOfCreation}</small>
                             <br>
-                            <small>${comment.author} replied ${comment.dateOfUpdate}</small>
+                            <small>${comment.author} edited ${comment.dateOfUpdate}</small>
                         </div>
                     </div>
                 </div>
