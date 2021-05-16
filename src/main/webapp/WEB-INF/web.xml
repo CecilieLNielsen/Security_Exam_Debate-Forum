@@ -5,7 +5,7 @@
          version="4.0">
 
 
-    <!-- login sevles -->
+    <!-- login servlets -->
     <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>Controllers.LoginController</servlet-class>
@@ -16,6 +16,15 @@
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>Controllers.LogoutController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
     <!-- Add a pair of following for each new controller -->
     <servlet>
         <servlet-name>GetAllThreadsController</servlet-name>

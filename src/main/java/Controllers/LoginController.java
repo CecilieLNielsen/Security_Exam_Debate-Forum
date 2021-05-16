@@ -2,7 +2,9 @@ package Controllers;
 
 import Models.Beans.LoginBean;
 import Models.Beans.UserBean;
+import Models.DTO.ThreadDTO;
 import Service.Interfaces.ILoginService;
+import Service.Interfaces.IThreadService;
 import Service.Service;
 import Utils.SessionUtil;
 
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "Login")
 public class LoginController extends HttpServlet {
@@ -28,8 +31,13 @@ public class LoginController extends HttpServlet {
         HttpSession session = SessionUtil.getSession(request);
         session.setAttribute("userBean", userBean);
         if (userBean != null) {
+            IThreadService threadService = Service.getInstance();
+            List<ThreadDTO> allThreads = threadService.getAllThreads();
+
+            session.setAttribute("allThreads", allThreads);
             request.getRequestDispatcher("/allThreads.jsp").forward(request, response);
         } else {
+            request.setAttribute("errMessage", "Invalid combination of email and password!");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }

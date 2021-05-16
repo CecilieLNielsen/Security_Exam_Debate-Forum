@@ -11,4 +11,12 @@ public class UserBean {
         this.username = user.getUsername();
         this.role = user.getRole().getRole();
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getRole() {
+        return role;
+    }
 }

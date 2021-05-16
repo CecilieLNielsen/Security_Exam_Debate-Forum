@@ -6,24 +6,21 @@
     <title>Login</title>
 </head>
 <body>
-<form name="GetAllThreads" action="<%= request.getContextPath() %>/GetAllThreads" method="POST">
-    <input type="submit" value="See all threads"/>
-</form>
 <form name="form" action="<%=request.getContextPath()%>/Login" method="post">
-
     <table align="center">
         <tr>
-            <td>Username</td>
-            <td><input type="text" name="username"/></td>
+            <td></td>
+            <td>
+                <span style="color:red"><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="email"/></td>
         </tr>
         <tr>
             <td>Password</td>
             <td><input type="text" name="password"/></td>
-        </tr>
-        <tr>
-            <td><span
-                    style="color:red"><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%></span>
-            </td>
         </tr>
         <tr>
             <td></td>
