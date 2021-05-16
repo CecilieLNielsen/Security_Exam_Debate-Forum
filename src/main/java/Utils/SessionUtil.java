@@ -23,8 +23,14 @@ public class SessionUtil {
         newSession.setAttribute("userBean", userBean);
 
         // Setting the session to expiry in 15 mins
-        newSession.setMaxInactiveInterval(15*60);
+        newSession.setMaxInactiveInterval(15 * 60);
 
         return newSession;
+    }
+
+    public static boolean isLoggedIn(HttpSession session) {
+        UserBean userBean = (UserBean) session.getAttribute("userBean");
+        // If userBean is null return false else true
+        return userBean == null ? false : true;
     }
 }

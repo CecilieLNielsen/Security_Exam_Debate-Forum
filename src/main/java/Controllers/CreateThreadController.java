@@ -19,11 +19,11 @@ import java.util.List;
 public class CreateThreadController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Check if user is logged in - if not redirect to login page
-        //ILoginService loginService = new LoginService();
-        //if (!loginService.isLoggedin()) {
-        //    request.getRequestDispatcher("/index.jsp").forward(request, response);
-        //}
+        HttpSession session = SessionUtil.getSession(request);
+        if(!SessionUtil.isLoggedIn(session)) {
+            request.setAttribute("errMessage", "Invalid session! Please login again.");
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+        }
 
         String title = request.getParameter("title");
         String category = request.getParameter("category");
@@ -31,10 +31,10 @@ public class CreateThreadController extends HttpServlet {
         ThreadDTO thread = new ThreadDTO(title, category, description);
 
         IThreadService threadService = Service.getInstance();
-        int threadId = threadService.createThread(thread);
 
+        int threadId = threadService.createThread(thread);
         List<ThreadDTO> allThreads = threadService.getAllThreads();
-        HttpSession session = SessionUtil.getSession(request);
+
         session.setAttribute("threadId", threadId);
         session.setAttribute("allThreads", allThreads);
 

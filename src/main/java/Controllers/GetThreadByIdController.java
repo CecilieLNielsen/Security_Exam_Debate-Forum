@@ -18,18 +18,18 @@ import java.io.IOException;
 public class GetThreadByIdController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Check if user is logged in - if not redirect to login page
-        //ILoginService loginService = new LoginService();
-        //if (!loginService.isLoggedin()) {
-        //    request.getRequestDispatcher("/index.jsp").forward(request, response);
-        //}
+        HttpSession session = SessionUtil.getSession(request);
+        if(!SessionUtil.isLoggedIn(session)) {
+            request.setAttribute("errMessage", "Invalid session! Please login again.");
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+        }
 
-        // Get all threads and redirect to all threads page
         int id = Integer.parseInt(request.getParameter("id"));
+
         IThreadService threadService = Service.getInstance();
+
         ThreadWithCommentsDTO threadWithComments = threadService.getThreadWithCommentsById(id);
 
-        HttpSession session = SessionUtil.getSession(request);
         session.setAttribute("threadWithComments", threadWithComments);
 
         request.getRequestDispatcher("/seeThread.jsp").forward(request, response);
