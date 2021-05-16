@@ -7,12 +7,12 @@ import java.util.Date;
 public class ThreadDTO {
 
     private int id;
-    private String title;
-    private String category;
+    private final String title;
+    private final String category;
     private String author;
-    private String description;
+    private final String description;
     private String dateOfCreation;
-    private String dateOfUpdate;
+    private final String dateOfUpdate;
     private int comments;
 
     /**

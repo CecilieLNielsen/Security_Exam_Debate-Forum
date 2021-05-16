@@ -4,8 +4,8 @@ import Models.Entities.User;
 
 public class UserBean {
 
-    private String username;
-    private String role;
+    private final String username;
+    private final String role;
 
     public UserBean(User user) {
         this.username = user.getUsername();

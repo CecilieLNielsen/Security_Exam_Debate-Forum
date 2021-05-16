@@ -19,7 +19,7 @@ public class GetThreadByIdController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = SessionUtil.getSession(request);
-        if(!SessionUtil.isLoggedIn(session)) {
+        if (!SessionUtil.isLoggedIn(session)) {
             request.setAttribute("errMessage", "Invalid session! Please login again.");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }

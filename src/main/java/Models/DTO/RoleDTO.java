@@ -4,8 +4,8 @@ import Models.Entities.Role;
 
 public class RoleDTO {
 
-    private int id;
-    private String role;
+    private final int id;
+    private final String role;
 
     /**
      * Constructor for converting a role entity into a roleDTO

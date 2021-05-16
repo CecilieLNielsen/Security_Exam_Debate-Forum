@@ -7,10 +7,10 @@ import java.util.Date;
 public class CommentDTO {
 
     private int id;
-    private String author;
-    private String description;
+    private final String author;
+    private final String description;
     private String dateOfCreation;
-    private String dateOfUpdate;
+    private final String dateOfUpdate;
 
     /**
      * Constructor to convert comment entity to comment DTO

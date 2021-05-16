@@ -5,8 +5,8 @@ import Models.Entities.User;
 public class UserDTO {
 
     private int id;
-    private String email;
-    private String username;
+    private final String email;
+    private final String username;
     private String hashedPassword;
     private RoleDTO role;
 

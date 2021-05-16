@@ -31,6 +31,6 @@ public class SessionUtil {
     public static boolean isLoggedIn(HttpSession session) {
         UserBean userBean = (UserBean) session.getAttribute("userBean");
         // If userBean is null return false else true
-        return userBean == null ? false : true;
+        return userBean != null;
     }
 }

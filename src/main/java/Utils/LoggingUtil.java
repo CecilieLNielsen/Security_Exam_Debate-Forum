@@ -10,8 +10,9 @@ public class LoggingUtil {
 
     /**
      * Log message with desired level to a file
+     *
      * @param level level of the log message
-     * @param msg the message to log
+     * @param msg   the message to log
      */
     public static void log(Level level, String msg) {
         Logger logger = Logger.getLogger(LoggingUtil.class.getName());
