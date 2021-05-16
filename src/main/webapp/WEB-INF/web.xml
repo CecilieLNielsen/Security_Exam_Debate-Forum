@@ -96,4 +96,10 @@
         <servlet-name>GoToController</servlet-name>
         <url-pattern>/GoTo</url-pattern>
     </servlet-mapping>
+
+    <!-- Error handling -->
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type >
+        <location>/GetAllThreads</location>
+    </error-page>
 </web-app>
