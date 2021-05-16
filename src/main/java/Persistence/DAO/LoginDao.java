@@ -1,7 +1,8 @@
 package Persistence.DAO;
 
 import Models.Beans.LoginBean;
+import Models.Beans.UserBean;
 
 public interface LoginDao {
-    boolean verifyCredentials(LoginBean loginCredentials);
+    UserBean verifyCredentialsAndLogin(LoginBean loginCredentials);
 }

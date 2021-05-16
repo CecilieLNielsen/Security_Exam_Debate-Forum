@@ -1,3 +1,4 @@
+<%@ page import="Models.Beans.UserBean" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -11,6 +12,12 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/allThreads.css">
     <title>All threads</title>
+    <% UserBean userBean = (UserBean) session.getAttribute("userBean"); %>
+    <%
+        if (userBean == null) {
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+        }
+    %>
 </head>
 <body>
 <div class="container">

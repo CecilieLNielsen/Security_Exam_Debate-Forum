@@ -1,11 +1,8 @@
 package Service.Interfaces;
 
 import Models.Beans.LoginBean;
+import Models.Beans.UserBean;
 
 public interface ILoginService {
-    boolean verifyCredentials(LoginBean loginCredentials);
-
-    boolean logout();
-
-    boolean isLoggedin();
+    UserBean verifyCredentialsAndLogin(LoginBean loginCredentials);
 }

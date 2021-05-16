@@ -1,29 +1,36 @@
 package Service;
 
 import Dependencies.MysqlConnection;
+import Models.Beans.LoginBean;
+import Models.Beans.UserBean;
 import Models.DTO.CommentDTO;
 import Models.DTO.ThreadDTO;
 import Models.DTO.ThreadWithCommentsDTO;
 import Persistence.CommentDaoImpl;
 import Persistence.DAO.CommentDao;
+import Persistence.DAO.LoginDao;
 import Persistence.DAO.ThreadDao;
+import Persistence.LoginDaoImpl;
 import Persistence.ThreadDaoImpl;
 import Service.Interfaces.ICommentService;
+import Service.Interfaces.ILoginService;
 import Service.Interfaces.IThreadService;
 
 import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
-public class Service implements IThreadService, ICommentService {
+public class Service implements IThreadService, ICommentService, ILoginService {
 
     private static Service service;
     private final ThreadDao THREAD_DAO;
     private final CommentDao COMMENT_DAO;
+    private final LoginDao LOGIN_DAO;
 
     private Service() {
         EntityManagerFactory emf = new MysqlConnection().createEntityManagerFactory();
         THREAD_DAO = ThreadDaoImpl.getInstance(emf);
         COMMENT_DAO = CommentDaoImpl.getInstance(emf);
+        LOGIN_DAO = LoginDaoImpl.getInstance(emf);
     }
 
     public static Service getInstance() {
@@ -70,5 +77,10 @@ public class Service implements IThreadService, ICommentService {
     @Override
     public void deleteComment(int id) {
         COMMENT_DAO.deleteComment(id);
+    }
+
+    @Override
+    public UserBean verifyCredentialsAndLogin(LoginBean loginCredentials) {
+        return LOGIN_DAO.verifyCredentialsAndLogin(loginCredentials);
     }
 }

@@ -1,4 +1,5 @@
 <%@ page import="Models.DTO.ThreadWithCommentsDTO" %>
+<%@ page import="Models.Beans.UserBean" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -13,8 +14,13 @@
           integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous"/>
     <link rel="stylesheet" href="css/seeThread.css">
     <% ThreadWithCommentsDTO threadWithComments = (ThreadWithCommentsDTO) request.getSession().getAttribute("threadWithComments"); %>
-    <title><%= threadWithComments.getThread().getTitle() %>
-    </title>
+    <title><%= threadWithComments.getThread().getTitle() %></title>
+    <% UserBean userBean = (UserBean) session.getAttribute("userBean"); %>
+    <%
+        if (userBean == null) {
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+        }
+    %>
 </head>
 <body>
 <div class="container">

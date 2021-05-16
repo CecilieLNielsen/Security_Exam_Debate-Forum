@@ -1,6 +1,7 @@
 package Persistence;
 
 import Models.Beans.LoginBean;
+import Models.Beans.UserBean;
 import Models.Entities.User;
 import Persistence.DAO.LoginDao;
 
@@ -40,16 +41,16 @@ public class LoginDaoImpl implements LoginDao {
     }
 
     @Override
-    public boolean verifyCredentials(LoginBean loginCredentials) {
+    public UserBean verifyCredentialsAndLogin(LoginBean loginCredentials) {
         EntityManager em = getEntityManager();
         TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.email = :email AND u.hashedPassword = :hashedPassword", User.class);
         query.setParameter("email", loginCredentials.getEmail());
         query.setParameter("hashedPassword", loginCredentials.getHashedPassword());
         try {
-            query.getSingleResult();
-            return true;
+            User user = query.getSingleResult();
+            return new UserBean(user);
         } catch (NoResultException e) {
-            return false;
+            return null;
         } finally {
             em.close();
         }
