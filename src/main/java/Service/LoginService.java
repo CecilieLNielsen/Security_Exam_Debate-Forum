@@ -2,12 +2,9 @@ package Service;
 
 import Dependencies.MysqlConnection;
 import Models.Beans.LoginBean;
-import Persistence.CommentDaoImpl;
 import Persistence.DAO.LoginDao;
 import Persistence.LoginDaoImpl;
-import Persistence.ThreadDaoImpl;
 import Service.Interfaces.ILoginService;
-import Utils.BCryptUtil;
 
 import javax.persistence.EntityManagerFactory;
 

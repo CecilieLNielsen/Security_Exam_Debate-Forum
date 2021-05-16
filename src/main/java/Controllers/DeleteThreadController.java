@@ -3,6 +3,7 @@ package Controllers;
 import Models.DTO.ThreadDTO;
 import Service.Interfaces.IThreadService;
 import Service.Service;
+import Utils.SessionUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +30,7 @@ public class DeleteThreadController extends HttpServlet {
         threadService.deleteThread(id);
 
         List<ThreadDTO> allThreads = threadService.getAllThreads();
-        HttpSession session = request.getSession();
+        HttpSession session = SessionUtil.getSession(request);
         session.setAttribute("allThreads", allThreads);
         request.getRequestDispatcher("/allThreads.jsp").forward(request, response);
     }

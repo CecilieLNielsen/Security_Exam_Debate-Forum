@@ -3,6 +3,7 @@ package Controllers;
 import Models.DTO.ThreadWithCommentsDTO;
 import Service.Interfaces.IThreadService;
 import Service.Service;
+import Utils.SessionUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +29,7 @@ public class GetThreadByIdController extends HttpServlet {
         IThreadService threadService = Service.getInstance();
         ThreadWithCommentsDTO threadWithComments = threadService.getThreadWithCommentsById(id);
 
-        HttpSession session = request.getSession();
+        HttpSession session = SessionUtil.getSession(request);
         session.setAttribute("threadWithComments", threadWithComments);
 
         request.getRequestDispatcher("/seeThread.jsp").forward(request, response);

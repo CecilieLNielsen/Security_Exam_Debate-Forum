@@ -1,8 +1,5 @@
 package Controllers;
 
-import Service.Interfaces.ILoginService;
-import Service.LoginService;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,15 +23,15 @@ public class SomeController extends HttpServlet {
             //ILoginService ls = new LoginService();
 
             //if (!ls.isLoggedin()) {
-                // user is logged in
+            // user is logged in
             //}
 
             String user = "john"; // request.getParameter("username");
             String pass = "doe"; // request.getParameter("password");
             //if (ls.verifyCredentials(user, pass)) {
-                // user logged in
+            // user logged in
             //} else {
-                // user not logged in
+            // user not logged in
             //}
         }
 

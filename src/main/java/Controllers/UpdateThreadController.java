@@ -3,6 +3,7 @@ package Controllers;
 import Models.DTO.ThreadDTO;
 import Service.Interfaces.IThreadService;
 import Service.Service;
+import Utils.SessionUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,7 +34,7 @@ public class UpdateThreadController extends HttpServlet {
         IThreadService threadService = Service.getInstance();
         int threadId = threadService.updateThread(thread);
 
-        HttpSession session = request.getSession();
+        HttpSession session = SessionUtil.getSession(request);
         session.setAttribute("threadId", threadId);
 
         request.getRequestDispatcher("/allThreads.jsp").forward(request, response);
