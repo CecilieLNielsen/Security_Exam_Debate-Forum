@@ -25,6 +25,17 @@
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterController</servlet-name>
+        <servlet-class>Controllers.RegisterController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RegisterController</servlet-name>
+        <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
+
     <!-- Add a pair of following for each new controller -->
     <servlet>
         <servlet-name>GetAllThreadsController</servlet-name>
@@ -95,6 +106,16 @@
     <servlet-mapping>
         <servlet-name>GoToController</servlet-name>
         <url-pattern>/GoTo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteCommentController</servlet-name>
+        <servlet-class>Controllers.DeleteCommentController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteCommentController</servlet-name>
+        <url-pattern>/DeleteComment</url-pattern>
     </servlet-mapping>
 
     <!-- Error handling -->

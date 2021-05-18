@@ -15,12 +15,6 @@ import java.io.IOException;
 public class GoToController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = SessionUtil.getSession(request);
-        if (!SessionUtil.isLoggedIn(session)) {
-            request.setAttribute("errMessage", "Invalid session! Please login again.");
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
-        }
-
         String page = request.getParameter("page");
 
         request.getRequestDispatcher("/" + page + ".jsp").forward(request, response);

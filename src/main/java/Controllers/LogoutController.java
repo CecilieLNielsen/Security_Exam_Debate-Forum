@@ -14,7 +14,7 @@ import java.io.IOException;
 public class LogoutController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = SessionUtil.getSession(request);
+        HttpSession session = request.getSession();
         if (session != null) {
             session.invalidate();
         }

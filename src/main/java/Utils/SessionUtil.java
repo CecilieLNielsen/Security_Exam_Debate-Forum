@@ -8,13 +8,14 @@ import javax.servlet.http.HttpSession;
 public class SessionUtil {
 
     public static HttpSession getSession(HttpServletRequest request) {
-        // Stored userBean
+        // Stored userBean variable
         UserBean userBean = null;
-        // Get the old session and invalidate
+        // Get the old session
         HttpSession oldSession = request.getSession(false);
         if (oldSession != null) {
             // Get old userBean
             userBean = (UserBean) oldSession.getAttribute("userBean");
+            // Invalidate old session
             oldSession.invalidate();
         }
         // Generate a new session

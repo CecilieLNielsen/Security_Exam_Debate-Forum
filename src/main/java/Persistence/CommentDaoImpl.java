@@ -2,6 +2,7 @@ package Persistence;
 
 import Models.DTO.CommentDTO;
 import Models.Entities.Comment;
+import Models.Entities.Thread;
 import Persistence.DAO.CommentDao;
 
 import javax.persistence.EntityManager;
@@ -65,11 +66,10 @@ public class CommentDaoImpl implements CommentDao {
     @Override
     public void deleteComment(int id) {
         EntityManager em = emf.createEntityManager();
+        Comment comment = em.find(Comment.class, id);
         try {
             em.getTransaction().begin();
-            Query query = em.createQuery("DELETE FROM Comment c WHERE c.id = :id");
-            query.setParameter("id", id);
-            query.executeUpdate();
+            em.remove(comment);
             em.getTransaction().commit();
         } finally {
             em.close();

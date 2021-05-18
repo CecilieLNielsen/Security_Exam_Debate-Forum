@@ -2,6 +2,7 @@ package Service;
 
 import Dependencies.MysqlConnection;
 import Models.Beans.LoginBean;
+import Models.Beans.RegisterBean;
 import Models.Beans.UserBean;
 import Models.DTO.CommentDTO;
 import Models.DTO.ThreadDTO;
@@ -82,5 +83,10 @@ public class Service implements IThreadService, ICommentService, ILoginService {
     @Override
     public UserBean verifyCredentialsAndLogin(LoginBean loginCredentials) {
         return LOGIN_DAO.verifyCredentialsAndLogin(loginCredentials);
+    }
+
+    @Override
+    public void register(RegisterBean credentials) {
+        LOGIN_DAO.register(credentials);
     }
 }

@@ -1,7 +1,9 @@
 package Persistence;
 
 import Models.Beans.LoginBean;
+import Models.Beans.RegisterBean;
 import Models.Beans.UserBean;
+import Models.Entities.Role;
 import Models.Entities.User;
 import Persistence.DAO.LoginDao;
 import Utils.BCryptUtil;
@@ -59,11 +61,32 @@ public class LoginDaoImpl implements LoginDao {
                 User user = query.getSingleResult();
                 return new UserBean(user);
             } else {
-                LoggingUtil.log(Level.WARNING, String.format("Verifing for %s went bad", loginCredentials.getEmail()));
+                LoggingUtil.log(Level.WARNING, String.format("Verifing for %s went bad since password was wrong", loginCredentials.getEmail()));
                 return null;
             }
         } catch (NoResultException e) {
+            LoggingUtil.log(Level.SEVERE, String.format("Verifing for %s went bad since email doesn't exist.", loginCredentials.getEmail()));
             return null;
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public void register(RegisterBean credentials) {
+        EntityManager em = getEntityManager();
+        User user = new User(credentials.getEmail(), credentials.getUsername(), BCryptUtil.hash(credentials.getPassword1()));
+
+        try {
+            TypedQuery<Role> query = em.createQuery("SELECT r FROM Role r WHERE r.role = :role", Role.class);
+            // Hardcoded USER to give all new registered user the USER role
+            query.setParameter("role", "USER");
+            Role role = query.getSingleResult();
+            user.setRole(role);
+
+            em.getTransaction().begin();
+            em.persist(user);
+            em.getTransaction().commit();
         } finally {
             em.close();
         }

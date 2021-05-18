@@ -24,7 +24,21 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Login"></input><input type="reset" value="Reset"></input></td>
+            <td>
+                <input type="submit" value="Login"/>
+                <input type="reset" value="Reset"/>
+            </td>
+        </tr>
+    </table>
+</form>
+<form name="GoTo" action="<%= request.getContextPath() %>/GoTo" method="POST">
+    <table align="center">
+        <tr>
+            <td></td>
+            <td>
+                <input type="hidden" name="page" value="register">
+                <input type="submit" value="Register"/>
+            </td>
         </tr>
     </table>
 </form>

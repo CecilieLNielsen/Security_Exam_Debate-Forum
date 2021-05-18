@@ -1,5 +1,6 @@
 package Models.Entities;
 
+import Models.Beans.RegisterBean;
 import Models.DTO.UserDTO;
 
 import javax.persistence.*;

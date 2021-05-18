@@ -73,6 +73,17 @@
                             <br>
                             <small>${comment.author} edited ${comment.dateOfUpdate}</small>
                         </div>
+                        <c:if test='${comment.author == sessionScope.userBean.username || "ADMIN" == sessionScope.userBean.role}'>
+                            <form name="DeleteCommentById" action="<%= request.getContextPath() %>/DeleteComment"
+                                  method="POST" id="deleteComment${comment.id}">
+                                <input type="hidden" name="id" value="${comment.id}">
+                                <a href="javascript:{}" onclick="document.getElementById('deleteComment${comment.id}').submit();"
+                                   class="forum-item-title">
+                                    <i class="fa fa-trash"></i>
+                                    Delete comment
+                                </a>
+                            </form>
+                        </c:if>
                     </div>
                 </div>
             </div>
